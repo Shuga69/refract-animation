@@ -13,6 +13,7 @@ import {
     RoundedBox,
     Cylinder,
     PivotControls,
+    Html,
 } from '@react-three/drei';
 import { useControls } from 'leva';
 import { Perf } from 'r3f-perf';
@@ -29,14 +30,14 @@ export default function Home() {
             </Head>
 
             <main>
-                <div id="canvas-container" style={{ width: '100vw', height: '80vh' }}>
+                <div id="canvas-container" style={{ width: '100vw', height: '90vh' }}>
                     <Canvas shadows camera={{ position: [0, 2, 8] }}>
                         <Scene />
-                        <Environment
+                        {/* <Environment
                             files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_09_1k.hdr"
                             background
-                            blur={3}
-                        />
+                            blur={0}
+                        /> */}
                         <OrbitControls minPolarAngle={0} maxPolarAngle={Math.PI / 2} makeDefault />
                     </Canvas>
                 </div>
@@ -47,7 +48,7 @@ export default function Home() {
 
 export function Scene(props) {
     const config = useControls({
-        meshPhysicalMaterial: false,
+        meshPhysicalMaterial: true,
         transmissionSampler: true,
         backside: false,
         samples: { value: 10, min: 1, max: 32, step: 1 },
@@ -65,7 +66,7 @@ export function Scene(props) {
         attenuationDistance: { value: 0.5, min: 0, max: 10, step: 0.01 },
         attenuationColor: '#ffffff',
         color: '#ffffff',
-        //bg: '#839681',
+        bg: '#839681',
         textColor: '#000000',
         fillWidth: false,
         fillHeight: false,
@@ -79,7 +80,7 @@ export function Scene(props) {
     //const {nodes, materials} = useGLTF('/gelatinous_cube-transformed.glb')
     return (
         <>
-            <Bounds fit fillWidth margin={0.8}>
+            {/* <Bounds fit fillWidth margin={0.8}>
                 <Center position={[0, 2, 0]} top>
                     <Text3D
                         castShadow
@@ -95,7 +96,9 @@ export function Scene(props) {
                         <meshStandardMaterial color={config.textColor} />
                     </Text3D>
                 </Center>
-            </Bounds>
+            </Bounds> */}
+
+            <pointLight position={[10, 10, 10]} />
             <Float floatIntensity={0.1} rotationIntensity={2} speed={config.float ? 4 : 0} floatingRange>
                 <PivotControls depthTest={false} anchor={[0, -1, -1]} scale={1.1} visible={config.showControls}>
                     <mesh position={[0, 2.7, 2.5]}>
