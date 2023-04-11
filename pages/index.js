@@ -16,7 +16,7 @@ import {
     Html,
 } from '@react-three/drei';
 import { useControls } from 'leva';
-import { Perf } from 'r3f-perf';
+// import { Perf } from 'r3f-perf';
 import * as THREE from 'three';
 
 import { useSpring, animated, config } from '@react-spring/three';
@@ -47,33 +47,33 @@ export default function Home() {
 }
 
 export function Scene(props) {
-    const config = useControls({
+    const config = {
         meshPhysicalMaterial: true,
         transmissionSampler: true,
         backside: false,
-        samples: { value: 10, min: 1, max: 32, step: 1 },
-        resolution: { value: 32, min: 256, max: 2048, step: 256 },
-        transmission: { value: 1, min: 0, max: 1 },
-        roughness: { value: 0.07, min: 0, max: 1, step: 0.01 },
-        thickness: { value: 1, min: 0, max: 10, step: 0.01 },
-        ior: { value: 1.2, min: 1, max: 5, step: 0.01 },
-        chromaticAberration: { value: 0.4, min: 0, max: 1 },
-        anisotropy: { value: 0.1, min: 0, max: 1, step: 0.01 },
-        distortion: { value: 0.2, min: 0, max: 1, step: 0.01 },
-        distortionScale: { value: 0.3, min: 0.01, max: 1, step: 0.01 },
-        temporalDistortion: { value: 0.5, min: 0, max: 1, step: 0.01 },
-        clearcoat: { value: 1, min: 0, max: 1 },
-        attenuationDistance: { value: 0.5, min: 0, max: 10, step: 0.01 },
+        samples: 10,
+        resolution: 32,
+        transmission: 1,
+        roughness: 0.07,
+        thickness: 1,
+        ior: 1.2,
+        chromaticAberration: 0.4,
+        anisotropy: 0.1,
+        distortion: 0.2,
+        distortionScale: 0.3,
+        temporalDistortion: 0.5,
+        clearcoat: 1,
+        attenuationDistance: 0.5,
         attenuationColor: '#ffffff',
         color: '#ffffff',
         bg: '#839681',
         textColor: '#000000',
         fillWidth: false,
         fillHeight: false,
-        margin: { value: 0, min: 0, max: 0.2, step: 0.01 },
+        margin: 0,
         float: true,
         showControls: false,
-    });
+    };
 
     const { viewport } = useThree();
 
